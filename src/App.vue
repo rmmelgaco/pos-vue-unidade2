@@ -1,26 +1,35 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
+<script setup>
+import PaginaHome from '@/pages/PaginaHome.vue';
+import PaginaAtracoesTuristicas from '@/pages/PaginaAtracoesTuristicas.vue';
+import PaginaMeuRoteiro from '@/pages/PaginaMeuRoteiro.vue';
+import {ref} from 'vue';
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+const paginaSelecionada = ref(0)
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const paginas = [
+  {titulo: 'Home', componente: PaginaHome},
+  {titulo: 'Atrações turísticas', componente: PaginaAtracoesTuristicas},
+  {titulo: 'Meu roteiro', componente: PaginaMeuRoteiro},
+]
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<template>
+  <header>
+    <div class='menuPaginas'>
+      <a v-for='(pagina, indicePagina) in paginas' :key='`pagina${indicePagina}`'
+      @click='paginaSelecionada = indicePagina'>
+        {{ pagina.titulo}}
+      </a>
+    </div>
+  </header>
+  <main>
+    <div>
+      <KeepAlive>
+        <component :is='paginas[paginaSelecionada].componente' />
+      </KeepAlive>
+    </div>
+  </main>
+</template>
+
+<style scoped>
 </style>
