@@ -1,11 +1,23 @@
 <script setup>
+import {inject} from 'vue';
+
 defineProps(['atracaoTuristica'])
+const meuRoteiro = inject('meuRoteiro', [])
+
+const adicionaAtracaoAoRoteiro = (atracaoTuristica) => {
+  if (meuRoteiro.value.includes(atracaoTuristica)) {
+    //
+  } else {
+    meuRoteiro.value.push(atracaoTuristica)
+  }
+}
 </script>
 <template>
   <section>
     <h2> {{ atracaoTuristica.nome }}</h2>
     <p class='descricaoAtracao'>{{ atracaoTuristica.descricao }}</p>
     <p class='footerCardAtracao'>{{ atracaoTuristica.visitacao }}</p>
+    <button @click='() => adicionaAtracaoAoRoteiro(atracaoTuristica)'>Adicionar ao roteiro</button>
   </section>
 </template>
 
@@ -26,5 +38,11 @@ section > .descricaoAtracao {
 
 section > .footerCardAtracao {
   text-align: right;
+}
+section > button {
+  padding: 10px 50px;
+  background-color: #a7c957;
+  border: none;
+  border-radius: 5px;
 }
 </style>
