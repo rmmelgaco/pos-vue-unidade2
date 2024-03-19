@@ -3,10 +3,11 @@ import {inject} from 'vue';
 
 defineProps(['atracaoTuristica'])
 const meuRoteiro = inject('meuRoteiro', [])
+const emit = defineEmits(['enviar-mensagem'])
 
 const adicionaAtracaoAoRoteiro = (atracaoTuristica) => {
   if (meuRoteiro.value.includes(atracaoTuristica)) {
-    //
+    emit('enviar-mensagem', 'Atração já adicionada ao meu roteiro.')
   } else {
     meuRoteiro.value.push(atracaoTuristica)
   }

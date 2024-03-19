@@ -9,43 +9,45 @@ const excluiAtracaoDoRoteiro = (atracaoTuristica) => {
 }
 </script>
 <template>
-  <h1>Meu roteiro</h1>
-  <table>
-    <thead>
-    <tr>
-      <th>Ordem</th>
-      <th>Nome atração</th>
-      <th>Visitacao</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr v-for='(atracaoRoteiro, indice) in meuRoteiro'
-        :key='`atracaoRoteiro${indice}`'>
-      <td style='text-align: right; padding: 15px'>
-        {{ indice + 1 }}
-      </td>
-      <td>
-        {{ atracaoRoteiro.nome }}
-      </td>
-      <td>
-        {{ atracaoRoteiro.visitacao }}
-      </td>
-      <td>
-        <button @click='() => excluiAtracaoDoRoteiro(atracaoRoteiro)'>
-          Excluir
-        </button>
-      </td>
-    </tr>
-    </tbody>
-    <tfoot>
-    <tr>
-      <td colspan='4'>
-        Total atrações: {{ meuRoteiro.length }}
-      </td>
-    </tr>
-    </tfoot>
-  </table>
+  <section>
+    <h1>Meu roteiro</h1>
+    <table>
+      <thead>
+      <tr>
+        <th>Ordem</th>
+        <th>Nome atração</th>
+        <th>Visitacao</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for='(atracaoRoteiro, indice) in meuRoteiro'
+          :key='`atracaoRoteiro${indice}`'>
+        <td style='text-align: right; padding: 15px'>
+          {{ indice + 1 }}
+        </td>
+        <td>
+          {{ atracaoRoteiro.nome }}
+        </td>
+        <td>
+          {{ atracaoRoteiro.visitacao }}
+        </td>
+        <td>
+          <button @click='() => excluiAtracaoDoRoteiro(atracaoRoteiro)'>
+            Excluir
+          </button>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan='4'>
+          Total atrações: {{ meuRoteiro.length }}
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </section>
 </template>
 
 <style scoped>
