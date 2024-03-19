@@ -33,14 +33,14 @@ const excluiAtracaoDoRoteiro = (atracaoTuristica) => {
       </td>
       <td>
         <button @click='() => excluiAtracaoDoRoteiro(atracaoRoteiro)'>
-          Excluir do roteiro
+          Excluir
         </button>
       </td>
     </tr>
     </tbody>
     <tfoot>
     <tr>
-      <td colspan='3'>
+      <td colspan='4'>
         Total atrações: {{ meuRoteiro.length }}
       </td>
     </tr>
@@ -78,10 +78,11 @@ table > tfoot > tr > td {
 }
 
 button {
-  padding: 10px 50px;
+  padding: 10px 10px;
   background-color: #c97f57;
   border: none;
   border-radius: 5px;
   font-size: smaller;
+  text-align: left;
 }
 </style>
